@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Montserrat Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: url("../public/fonts/Montserrat_Bold_700.ttf")
+}
+
+@font-face {
+  font-family: 'Montserrat Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url("../public/fonts/Montserrat_Regular_400.ttf")
+}
+
+* {
+  margin: 0%;
+  padding: 0%;
+  font-family: 'Montserrat Bold';
+}
+
+.App {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
