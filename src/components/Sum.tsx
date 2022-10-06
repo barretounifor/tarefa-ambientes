@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React, { SetStateAction } from 'react'
 import { API_URL } from '../config/api_url';
-import { calcFibonacci } from '../functions/calcFibonacci';
-import { isPrimeNumber } from '../functions/isPrimeNumber';
+import { sum } from '../functions/sum';
 import './Fibonacci.css'
 
 interface IPrimeNumberComponent {
@@ -13,21 +12,21 @@ interface IPrimeNumberComponent {
     setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function PrimeNumber({ visible, quantity, setResult, setVisible, setQuantity }: IPrimeNumberComponent) {
+function Sum({ visible, quantity, setResult, setVisible, setQuantity }: IPrimeNumberComponent) {
 
     function handleCalc() {
-        const result = isPrimeNumber(quantity) ? "É primo" : "Não é primo.";
-        setResult(result);
+        const result = sum(quantity)
+        setResult(result.toString());
         setVisible(false);
     }
 
     async function handleCalcJava() {
-        const response = await axios.post(`http://localhost:8080/calc/is-prime`, {
-            number: quantity
+        const numbersArray = quantity.split(" ").map(numberString => parseFloat(numberString));
+
+        const response = await axios.post(`http://localhost:8080/calc/sum-numbers`, {
+            totalNumbers: numbersArray
         })
-        console.log(response.data)
-        const isPrime = response.data == true ? "É primo" : "Não é primo";
-        setResult(isPrime);
+        setResult(response.data);
         setVisible(false);
     }
 
@@ -36,10 +35,11 @@ function PrimeNumber({ visible, quantity, setResult, setVisible, setQuantity }: 
             <div className='whitebox-container'>
                 <div className='whitebox'>
                     <div style={{ width: "50%", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                        <h1 className='white-box-label'>Insira o número para conferir se é primo ou não</h1>
+                        <h1 className='white-box-label'>Insira um conjunto de números para obter sua soma</h1>
                         <input
                             className='input'
                             type="text"
+                            placeholder='Ex: 1 2 3 4 5 6 7 9 55'
                             onChange={e => setQuantity(e.target.value)}
                         />
                     </div>
@@ -55,4 +55,4 @@ function PrimeNumber({ visible, quantity, setResult, setVisible, setQuantity }: 
     return null;
 }
 
-export default PrimeNumber;
+export default Sum;

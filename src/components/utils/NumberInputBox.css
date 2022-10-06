@@ -1,0 +1,28 @@
+.number-input-box {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.number-input-box input {
+    text-align: center;
+}
+
+.number-input-box button {
+    padding: .25rem;
+    background-color: blue;
+    border: none;
+    color: white;
+    margin-top: 1%;
+    cursor: pointer;
+}
+
+.number-input-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    grid-template-columns: 10rem 10rem 10rem 10rem;
+}
