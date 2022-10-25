@@ -1,9 +1,11 @@
 import { Dispatch, SetStateAction } from "react";
 
-export function calcFibonacci(quantity: string) {
+export function calcFibonacci(quantity: string | number): string {
     const fibonacciStart = [0, 1];
 
-    for (var i = 1; i <= parseInt(quantity); i++) {
+    quantity = typeof quantity == 'string' ? parseInt(quantity) : quantity;
+
+    for (var i = 1; i <= quantity; i++) {
         fibonacciStart[i + 1] = fibonacciStart[i] + fibonacciStart[i - 1];
     }
 
