@@ -5,7 +5,7 @@ export function calcFibonacci(quantity: string | number): string {
 
     quantity = typeof quantity == 'string' ? parseInt(quantity) : quantity;
 
-    for (var i = 1; i <= quantity; i++) {
+    for (var i = 1; i < quantity - 1; i++) {
         fibonacciStart[i + 1] = fibonacciStart[i] + fibonacciStart[i - 1];
     }
 

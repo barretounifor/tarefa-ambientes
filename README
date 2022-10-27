@@ -1,1 +1,7 @@
-Executar o script npm run test, os testes estão alocados em tests.spec.ts
+Antes de tudo, ao clonar repositório, deve-se executar o comando abaixo:
+    npm install
+
+Após isso, executar o comando abaixo:
+    npm run teste
+    
+e verificar os resultados
